@@ -19,7 +19,6 @@ async def text_to_speech(update: Update, context: ContextTypes.DEFAULT_TYPE):
     status_msg = await update.message.reply_text("🎙️ Generating Male Voice-over...")
     
     # Process custom tags for emotions/pauses
-    # Replace [pause] or [pause=2s] with SSML break tag
     processed_text = re.sub(r'\[pause\]', '<break time="1s"/>', text, flags=re.IGNORECASE)
     processed_text = re.sub(r'\[pause=(\d+)s\]', r'<break time="\1s"/>', processed_text, flags=re.IGNORECASE)
     
@@ -56,4 +55,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
